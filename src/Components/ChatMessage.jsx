@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap"
 import { socket } from "../contex/ChatContex"
 import { ChatContex } from "../contex/ChatContex";
 // import { getFilteredMessages } from "../helper"
+import "../style.css"
 
 import { getcurrentDateAndTime } from "../helper"
 
@@ -38,11 +39,17 @@ export function ChatMessage(){
     return (
 
         <div>
-            <div className="border" style={{height:"500px"}} >
+            <div className="border" style={{height:"500px" , overflowY:"scroll" }} >
               {
                 messages.map(msg => (
 
-                    <p>{ msg.content }</p>
+                    <div className={msg.from?.email == user.email ? "local_message " : "incoming_message" }>
+                            <p className="text-center "> {msg.from?.name}</p>
+                            <p className="text-center " >{ msg.content }</p>
+                            <p className="text-center" > { msg.time }</p>
+                    </div>
+
+                 
 
                 ))
               }

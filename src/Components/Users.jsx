@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { useEffect } from "react"
 import { socket } from "../contex/ChatContex"
 import { ChatContex } from "../contex/ChatContex"
-import { getFilteredMessages } from "../helper"
+
 import "../style.css"
 
 export function Users(){
@@ -57,9 +57,6 @@ export function Users(){
             setmessages(messages)
 
         })
-
-        //  let filteredMessages = getFilteredMessages()
-        //  setmessages( messages )
     }
 
     socket.off("new_user").on("new_user" , (members) => {
@@ -72,9 +69,9 @@ export function Users(){
         <di>
                
                 {
-                    users.map(user => (
-                        <ul key={user.id}  className= {  user.name == userComper.name ?  "border selected" : "border " }  onClick={() => joinRoom(user)} >
-                           <li  >{user.name}</li>  
+                    users.map(u => (
+                        <ul key={u.id}  className= {  u.name == userComper.name ?  "border selected" : "border " } hidden={u.email == user.email } onClick={() => joinRoom(u)} >
+                           <li  >{u.name}</li>  
                         </ul>
                     ))
                 }
