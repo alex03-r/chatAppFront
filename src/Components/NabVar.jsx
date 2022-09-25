@@ -30,17 +30,17 @@ export function NabVar(){
                             {
                                    existUser.length <= 0 && (
                                     <>
-                                      <Nav.Link > <Link to="/login" style={{textDecoration:"none", color:"black"}} > <p className='fw-bold'>Login</p> </Link> </Nav.Link>
-                                      <Nav.Link ><Link to="/signup" style={{textDecoration:"none", color:"black"}} > <p className='fw-bold'>Sign Up</p> </Link> </Nav.Link>
+                                      <Nav.Link > <Link to="/login" style={{textDecoration:"none", color:"black"}} > <p className='fw-bold fs-4'>Login</p> </Link> </Nav.Link>
+                                      <Nav.Link ><Link to="/signup" style={{textDecoration:"none", color:"black"}} > <p className='fw-bold fs-4'>Sign Up</p> </Link> </Nav.Link>
                                     </>
                                   
                                    )
                             }
                          
-                            <Nav.Link ><Link to="/chat" style={{textDecoration:"none", color:"black"}} > <p className='fw-bold'>Chat</p> </Link> </Nav.Link>
+                            <Nav.Link ><Link to="/chat" style={{textDecoration:"none", color:"black"}} > <p className='fw-bold fs-4'>Chat</p> </Link> </Nav.Link>
                             <NavDropdown title={
                                 existUser.length > 0 && <div className='d-flex' >                                                
-                                                 <p>{user.name}</p>
+                                                 <p className='fs-4 fw-bold'>{user.name}</p>
                                                  <img src={erickBrother}  style={{width:"40px", height:"38px", borderRadius:"50%" , top:"0px" , marginLeft:"10px"}}/>
                                                  </div>
 

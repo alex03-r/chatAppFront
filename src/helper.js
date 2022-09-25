@@ -4,11 +4,11 @@
      export  function getcurrentDateAndTime(){
 
         let date = new Date();
-        let realDate = date.toLocaleString();
-        let splitedrealDate = realDate.split(",")
+        let fullCurrentDate = date.toLocaleString();
+        let splitedfullCurrentDate = fullCurrentDate.split(",")
 
-        let currentDate = splitedrealDate[0];
-        let currentTime = splitedrealDate[1];
+        let currentDate = splitedfullCurrentDate[0];
+        let currentTime = splitedfullCurrentDate[1];
 
         let splitedCurrentTime = currentTime.split(':')
         splitedCurrentTime.pop();
@@ -19,7 +19,6 @@
             date:currentDate,
             time:joinSplitedCurrentTime
         }
-
     }
 
 
