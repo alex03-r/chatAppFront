@@ -6,76 +6,76 @@ import { ChatContex } from "../contex/ChatContex"
 
 import "../style.css"
 
-export function Users(){
+export function Users() {
 
-    const { currentRoom , setCurrentRoom , user , messages , setmessages } = useContext(ChatContex)
+    const { currentRoom, setCurrentRoom, user, messages, setmessages } = useContext(ChatContex)
 
     const existUser = Object.keys(user);
 
-    const [users , setUsers ] = useState([])
-    const [userComper , setuserComper] = useState({})
- 
+    const [users, setUsers] = useState([])
+    const [userComper, setuserComper] = useState({})
+
     useEffect(() => {
 
         // if(existUser.length > 0 ){
-            if( existUser.length <= 0 ) return 
+        if (existUser.length <= 0) return
+
+        setCurrentRoom("diaz")
+
+        socket.emit("join_room", currentRoom)
+
+        socket.emit("new_user")
 
 
-            setCurrentRoom("diaz")
-
-        
-            socket.emit("join_room", currentRoom )    
-            socket.emit("new_user" )    
-
-    }, [ user ])
+    }, [user])
 
 
-    
-    function orderID(id1, id2){
 
-        if(id1 > id2){
+    function orderID(currentUserId, selectedUserId) {
 
-            return id1 + "-" + id2;
-        }else {
-            return id2 + "-" + id1
+        if (currentUserId > selectedUserId) {
+
+            return currentUserId + "-" + selectedUserId;
+
+        } else {
+
+            return selectedUserId + "-" + currentUserId
         }
 
     }
 
 
-    function joinRoom(member){
+    function joinRoom(member) {
 
-        let roomId = orderID(user._id , member._id )           
-           
-        socket.emit("join_room", roomId  )
+        let roomId = orderID(user._id, member._id)
+
+        socket.emit("join_room", roomId)
 
         setCurrentRoom(roomId)
         setuserComper(member)
 
-        socket.on("mess" , messages => {
+        socket.on("mess", messages => {
 
             setmessages(messages)
 
         })
     }
 
-    socket.off("new_user").on("new_user" , (members) => {
-        setUsers( members )       
+    socket.off("new_user").on("new_user", (members) => {
+        setUsers(members)
     })
 
-    
 
-    return(
-        <di>
-               
-                {
-                    users.map(u => (
-                        <ul key={u.id}  className= {  u.name == userComper.name ?  "border selected" : "border " } hidden={u.email == user.email } onClick={() => joinRoom(u)} >
-                           <li  >{u.name}</li>  
-                        </ul>
-                    ))
-                }
-          
-        </di>
+
+    return (
+        <div className="">
+            {
+                users.map(u => (
+                    <ul key={u.id} className="list-group mb-2" hidden={u.email == user.email} onClick={() => joinRoom(u)} >
+                        <li className={u.name == userComper.name ? "list-group-item list-group-item-primary text-capitalize" : " list-group-item text-capitalize"} >{u.name}</li>
+                    </ul>
+                ))
+            }
+        </div>
     )
 }

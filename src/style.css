@@ -13,15 +13,9 @@
 
 
 .local_message{
-    width: 40%;
-    height: 120px;
-    left: 0px;
-    background-color:rgb(192, 247, 181);
-    color: black;
-    border-radius: 40%;
-    padding: 0px;
-    margin-left: 8px;
-    margin: 10px;   
+    width: 20%; 
+    color: black; 
+    margin-left: 2%;
 
 }
 
@@ -32,14 +26,10 @@
 
 .incoming_message{
 
-    width: 40%;
-    margin-left: 60%;
-    background-color: brown;
-    color: white  ;
-    border-radius: 40%;
-    padding: 0px;
+    width: 20%;
+    margin-left: 78%;
+    color: black  ; 
     
-    /* margin-left: 8px; */
-    /* margin: 10px;    */
+  
 
 }

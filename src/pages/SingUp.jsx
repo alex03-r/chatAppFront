@@ -2,7 +2,7 @@
 import { useState} from 'react'
 import {Form,Button , Container } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
-
+import Swal from 'sweetalert2'
 export function SingUp(){
 
     let navigate = useNavigate();
@@ -34,6 +34,7 @@ export function SingUp(){
 
       if(data.ok){
 
+        Swal.fire("Good", "You are already signed up , go ahead and log in")
        return  navigate('/login')
 
       }
@@ -42,8 +43,8 @@ export function SingUp(){
 
 
     return(
-        <Container className="mt-5 d-flex justify-content-center w-25 border"  >
-                <Form style={{width:"100vw", marginTop:"36px" , marginBottom:"10px"}} onSubmit={ signUpUser } >
+        <Container className="mt-3 d-flex justify-content-center"  >
+                <Form style={{  marginBottom:"10px"}} className="border rounded p-3" onSubmit={ signUpUser } >
                         <h2 className="text-center" >Sign up</h2>
                         <Form.Group className="mb-3" >
                             <Form.Label>Name</Form.Label>
@@ -63,7 +64,7 @@ export function SingUp(){
                                 Sign Up
                             </Button>
                             <Link to="/login" style={{marginLeft:"18px", marginTop:"5px"}} >
-                                        <label style={{cursor:"pointer"}} > Already have an acocunt? </label>
+                            <label style={{cursor:"pointer"}} > Already have an acocunt? </label>
                             </Link>
                         </div>
                 </Form>  

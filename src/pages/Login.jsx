@@ -1,83 +1,82 @@
 
 import { useContext, useState } from "react"
-import {Form,Button , Container } from "react-bootstrap"
+import { Form, Button, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { ChatContex } from '../contex/ChatContex'
 import { useNavigate } from "react-router-dom"
 
+import Swal from 'sweetalert2'
 
-export function Login(){
+export function Login() {
 
-    const { user, setuser } = useContext( ChatContex )
-     const navigate =   useNavigate()
+    const { user, setuser } = useContext(ChatContex)
+    const navigate = useNavigate()
 
-      const [inputs, setinputs] = useState({
-        email:"",
-        password:""
-      })
+    const [inputs, setinputs] = useState({
+        email: "",
+        password: ""
+    })
 
-      function onInputsChange(e){
-         
-          setinputs( inputs => {
+    function onInputsChange(e) {
 
-                  return {
-                      ...inputs,
-                      [e.target.name]:e.target.value
-                  }
-          })
-      }
+        setinputs(inputs => {
 
-     async function loginUser(e){
+            return {
+                ...inputs,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
 
-        e.preventDefault()   
+    async function loginUser(e) {
 
-        if( !inputs.email  || !inputs.password  ) return alert("Please fill out the inputs")         
+        e.preventDefault()
 
-        let response = await     fetch("http://127.0.0.1:3001/chat/login" , { method:"POST",headers:{ "Content-Type":"application/json" }, body: JSON.stringify(inputs) });
-        let data = await response.json();       
+        if (!inputs.email || !inputs.password) return alert("Please fill out the inputs")
 
-        if( data.ok ){
+        let response = await fetch("http://127.0.0.1:3001/chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
+        let data = await response.json();
 
-          setuser(data.user)
-          //console.log(user)
-     
-         
-         return navigate('/chat')
-        }             
+        if (data.ok) {
 
-        return alert("Sorry this user does not exist")  
-             
-  
-      }
+            setuser(data.user)
+            //console.log(user)     
 
+            return navigate('/chat')
+        }
+
+        return Swal.fire("Error" , "Sorry this user does not exist")
+
+    }
 
 
 
-    return(
-   
-        <Container className="mt-5 d-flex justify-content-center w-25 border"  >
-             
-                <Form style={{width:"100vw", marginTop:"36px", marginBottom:"10px"}} onSubmit={ loginUser }  >
+
+    return (
+
+        <Container className="mt-3 d-flex justify-content-center"  >
+               
+            <Form style={{  marginTop: "26px", marginBottom: "10px" }} className="border rounded p-3"   onSubmit={loginUser}  >
                 <h2 className="text-center" >Login</h2>
                 <Form.Group className="mb-3" >
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email"  name="email" onChange={ onInputsChange }  value={inputs.email} />                 
+                    <Form.Control type="email" placeholder="Enter email" name="email" onChange={onInputsChange} value={inputs.email} />
                 </Form.Group>
-            
+
                 <Form.Group className="mb-3" >
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name="password"  onChange={ onInputsChange } value={inputs.password}  />
+                    <Form.Control type="password" placeholder="Password" name="password" onChange={onInputsChange} value={inputs.password} />
                 </Form.Group>
-                <div className="d-flex ">
+                <div className="">
                     <Button variant="primary" type="submit">
                         Login
                     </Button>
-                    <Link to="/signup" style={{marginLeft:"18px", marginTop:"5px"}} >
-                    <label  style={{cursor:"pointer"}} > Do not have an account? </label>
+                    <Link to="/signup" style={{ marginLeft: "10px", marginTop: "5px" }} >
+                        <label style={{ cursor: "pointer" }} > Do not have an account? </label>
                     </Link>
                 </div>
-                </Form>  
-         </Container>
-      
+            </Form>
+        </Container>
+
     )
 }
