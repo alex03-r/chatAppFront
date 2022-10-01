@@ -34,7 +34,7 @@ export function Login() {
 
         if (!inputs.email || !inputs.password) return alert("Please fill out the inputs")
 
-        let response = await fetch("http://127.0.0.1:3001/chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
+        let response = await fetch("https://chat-backend-app-sok.herokuapp.com/chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
         let data = await response.json();
 
         if (data.ok) {

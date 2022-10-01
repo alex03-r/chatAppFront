@@ -24,26 +24,26 @@ export function Chat() {
 
     return (
 
-        <Container className="" >
-            {showAlert ?
+        <div className=" container-md " >
+            {showAlert &&
                 <div className="d-flex justify-content-center">
                     <div class="alert alert-success w-50 text-center " role="alert">
                         Wellcome to  the chat <span className="fw-bold" >{user.name}</span>, go ahead and get in contact with your friends
                     </div>
-                </div> :
-                <h1 >Chat App</h1>
+                </div> 
+       
             }
-            <Row>
-                <Col md={4} >
+            <Row >
+                <Col sm={11} md={4} >
                     <Users />
                 </Col>
-                <Col md={8}  >
+                <Col sm={11} md={8}  >
                     <ChatMessage />
                 </Col>
 
             </Row>
 
-        </Container>
+        </div>
     )
 
 }

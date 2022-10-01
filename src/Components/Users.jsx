@@ -8,25 +8,27 @@ import "../style.css"
 
 export function Users() {
 
-    const { currentRoom, setCurrentRoom, user, messages, setmessages } = useContext(ChatContex)
+    const { currentRoom, setCurrentRoom, user, messages, setmessages, userComper, setuserComper } = useContext(ChatContex)
 
     const existUser = Object.keys(user);
 
-    const [users, setUsers] = useState([])
-    const [userComper, setuserComper] = useState({})
+    const [users, setusers] = useState([])
+  
+
+    let person
 
     useEffect(() => {
 
         // if(existUser.length > 0 ){
-        if (existUser.length <= 0) return
-
-        setCurrentRoom("diaz")
+        // if (existUser.length > 0) return
+        let roomId = orderID(user._id,users[0]?._id)
+        
+        setCurrentRoom(roomId)
 
         socket.emit("join_room", currentRoom)
 
         socket.emit("new_user")
-
-
+        
     }, [user])
 
 
@@ -49,9 +51,11 @@ export function Users() {
 
         let roomId = orderID(user._id, member._id)
 
+        
         socket.emit("join_room", roomId)
 
         setCurrentRoom(roomId)
+
         setuserComper(member)
 
         socket.on("mess", messages => {
@@ -62,17 +66,17 @@ export function Users() {
     }
 
     socket.off("new_user").on("new_user", (members) => {
-        setUsers(members)
+        setusers(members)
     })
 
 
 
     return (
-        <div className="">
+        <div className=" ms-sm-4 ms-md-0 p-3  " style={{height:"340px",  minHeight:"300px"}}>
             {
-                users.map(u => (
+                users.map((u,i ) => (
                     <ul key={u.id} className="list-group mb-2" hidden={u.email == user.email} onClick={() => joinRoom(u)} >
-                        <li className={u.name == userComper.name ? "list-group-item list-group-item-primary text-capitalize" : " list-group-item text-capitalize"} >{u.name}</li>
+                        <li className={u.name == userComper.name ? "list-group-item list-group-item-primary text-capitalize" : " list-group-item text-capitalize"} > {i + 1} - {u.name}</li>
                     </ul>
                 ))
             }

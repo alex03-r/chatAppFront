@@ -4,7 +4,7 @@ import { createContext, useState , useEffect} from "react";
 export const  ChatContex  = createContext(null)
 import { io } from "socket.io-client"
 
-export const socket = io("http://127.0.0.1:3001")
+export const socket = io("https://chat-backend-app-sok.herokuapp.com/")
  
 
 export function ChatProvider({children}){
@@ -16,6 +16,7 @@ export function ChatProvider({children}){
 
      const [ currentRoom , setCurrentRoom ] = useState("")
      const [messages, setmessages] = useState([])
+     const [userComper, setuserComper] = useState({})
      
 
     
@@ -29,7 +30,7 @@ export function ChatProvider({children}){
 
 
     return(
-        <ChatContex.Provider value={{ user , setuser , currentRoom, setCurrentRoom , messages, setmessages }} >
+        <ChatContex.Provider value={{ user , setuser , currentRoom, setCurrentRoom , messages, setmessages , userComper, setuserComper}} >
             { children }
         </ChatContex.Provider>
     )

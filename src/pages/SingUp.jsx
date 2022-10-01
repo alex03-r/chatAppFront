@@ -3,6 +3,9 @@ import { useState} from 'react'
 import {Form,Button , Container } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2'
+// import dotenv from 'dotenv'
+// dotenv.config()
+
 export function SingUp(){
 
     let navigate = useNavigate();
@@ -12,8 +15,10 @@ export function SingUp(){
         password:""
     })
 
+
     function handleInputsChange(e){
 
+    
         setinputsChange(inputs => {
 
             return {
@@ -22,6 +27,8 @@ export function SingUp(){
             }
         })
 
+
+
     }
 
    async function signUpUser(e){
@@ -29,9 +36,10 @@ export function SingUp(){
       e.preventDefault();
       if(!inputsChange.name || !inputsChange.email || !inputsChange.password) return alert("One of the inputs are not filled out please enter the information");
             
-      const response  = await fetch("http://127.0.0.1:3001/chat/signup", { method:"POST",headers:{ "Content-Type":"application/json" }, body: JSON.stringify(inputsChange) });
+      const response  = await fetch("https://chat-backend-app-sok.herokuapp.com/chat/signup", { method:"POST",headers:{ "Content-Type":"application/json" }, body: JSON.stringify(inputsChange) });
       const data = await response.json()
-
+      //http://127.0.0.1:3001 
+      //https://chat-backend-app-sok.herokuapp.com/
       if(data.ok){
 
         Swal.fire("Good", "You are already signed up , go ahead and log in")

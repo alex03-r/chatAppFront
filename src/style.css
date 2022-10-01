@@ -13,9 +13,10 @@
 
 
 .local_message{
-    width: 20%; 
+    /* width: 20%;  */
+    width: 30%;
     color: black; 
-    margin-left: 2%;
+    margin-left: 10%;
 
 }
 
@@ -26,8 +27,8 @@
 
 .incoming_message{
 
-    width: 20%;
-    margin-left: 78%;
+    width: 30%;
+    margin-left: 50%;
     color: black  ; 
     
   
