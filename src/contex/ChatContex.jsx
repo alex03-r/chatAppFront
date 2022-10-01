@@ -9,7 +9,6 @@ export const socket = io("https://chat-backend-app-sok.herokuapp.com/")
 
 export function ChatProvider({children}){
 
-
      let localStorageUser =  localStorage.getItem("user");
      let parseUser = JSON.parse(localStorageUser)
      const [user, setuser] = useState(parseUser)

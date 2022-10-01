@@ -42,7 +42,7 @@ export function ChatMessage() {
                 //    { messages.filter((msg, i, arr) =>  ) }
                        
                         messages.map((msg, i, arr) => (
-                            <>
+                            <div key={i} >
                                 <h1 className="text-center h3" >{msg?.date.split("/")[0] !== arr[i + 1]?.date.split("/")[0] ? msg?.date  : null}</h1>
 
                                 <div className={msg.from?.email == user.email ? "incoming_message shadow border rounded mt-3" : "local_message shadow border   border  rounded mt-3"}>
@@ -53,7 +53,7 @@ export function ChatMessage() {
                                     </div>
                                     <p className="ms-2" >{msg.content}</p>
                                 </div>
-                            </>
+                            </div>
 
                         ))
                 }
