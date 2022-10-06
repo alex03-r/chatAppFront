@@ -37,7 +37,7 @@ export function Login() {
         let { baseURL } = getEnvVariables();
 
        // let response = await fetch("https://chat-backend-app-sok.herokuapp.com/chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
-       let response = await fetch( baseURL + "/chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
+       let response = await fetch( baseURL + "chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
         let data = await response.json();
 
         if (data.ok) {
