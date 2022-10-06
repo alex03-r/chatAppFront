@@ -24,7 +24,7 @@ export function getcurrentDateAndTime() {
  export  function getEnvVariables(){
 
     return { 
-        ...import.meta.env
+        baseURL:import.meta.env.baseURL
     }
 
 }
