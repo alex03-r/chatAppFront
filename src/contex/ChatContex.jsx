@@ -15,17 +15,13 @@ export function ChatProvider({children}){
 
      const [ currentRoom , setCurrentRoom ] = useState("")
      const [messages, setmessages] = useState([])
-     const [userComper, setuserComper] = useState({})
-     
-
+     const [userComper, setuserComper] = useState({})    
     
-
     useEffect(() => {
 
         localStorage.setItem("user" , JSON.stringify(user) )
 
-    }, [ user ])
-    
+    }, [ user ])    
 
 
     return(
