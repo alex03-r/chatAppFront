@@ -21,6 +21,14 @@ export function getcurrentDateAndTime() {
 }
 
 
+ export  function getEnvVariables(){
+
+    return { 
+        ...import.meta.env
+    }
+
+}
+
 export function getFilteredMessages(messages, currentRoom) {
 
     let filteredMessages = messages.filter(msg => msg.to == currentRoom)
