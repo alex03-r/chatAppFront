@@ -34,10 +34,10 @@ export function Login() {
         e.preventDefault()
 
         if (!inputs.email || !inputs.password) return alert("Please fill out the inputs");
-        let { baseURL } = getEnvVariables();
+        let {  VITE_BASEURL } = getEnvVariables();
 
        // let response = await fetch("https://chat-backend-app-sok.herokuapp.com/chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
-       let response = await fetch( baseURL + "chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
+       let response = await fetch(  VITE_BASEURL + "chat/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(inputs) });
         let data = await response.json();
 
         if (data.ok) {

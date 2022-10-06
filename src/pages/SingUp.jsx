@@ -36,8 +36,8 @@ export function SingUp(){
 
       e.preventDefault();
       if(!inputsChange.name || !inputsChange.email || !inputsChange.password) return alert("One of the inputs are not filled out please enter the information");
-      let { baseURL } = getEnvVariables();
-      const response  = await fetch( baseURL + "chat/signup", { method:"POST",headers:{ "Content-Type":"application/json" }, body: JSON.stringify(inputsChange) });
+      let {  VITE_BASEURL } = getEnvVariables();
+      const response  = await fetch(  VITE_BASEURL + "chat/signup", { method:"POST",headers:{ "Content-Type":"application/json" }, body: JSON.stringify(inputsChange) });
       const data = await response.json()
       //http://127.0.0.1:3001 
       //https://chat-backend-app-sok.herokuapp.com/
