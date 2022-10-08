@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Nav ,Navbar , NavDropdown , Container, Button } from  'react-bootstrap'
 import { Link , useNavigate, Navigate  } from 'react-router-dom'
-import LogoChat from '../assets/LogoChat.png'
+import logoChat from '../assets/logoChat.png'
 import { ChatContex } from '../contex/ChatContex'
 import userL from '../assets/userL.png'
 export function NabVar(){
@@ -22,7 +22,7 @@ export function NabVar(){
 
         <Navbar style={{height:"100px"}} >
          <Container  >
-                <Navbar.Brand>  <img src={LogoChat} style={{width:"90px"}} /> </Navbar.Brand>
+                <Navbar.Brand>  <img src={logoChat} style={{width:"90px"}} /> </Navbar.Brand>
                  {    existUser.length > 1 &&  <label className='h1' >Chat app</label> }  
                 <Navbar.Collapse id="basic-navbar-nav " style={{width:"10px"}} >
                         <Nav className="ms-auto" >
