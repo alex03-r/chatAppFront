@@ -42,6 +42,7 @@ export function Login() {
 
         if (data.ok) {
 
+            localStorage.setItem('token', data.token);
             setuser(data.user)
             //console.log(user)     
 
