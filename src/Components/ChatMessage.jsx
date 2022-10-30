@@ -35,14 +35,14 @@ export function ChatMessage() {
     return (
 
         <div className="ms-sm-4 ms-md-0" >
-            <div className="border rounded shadow mt-sm-0 mt-md-3" style={{ height: "300px", overflowY: "scroll" }} >
+            <div className="border rounded shadow mt-sm-0 mt-md-3" style={{ height: "300px", overflowY: "auto" }} >
                 {
 
                     messages.length <= 0 ? <div className="alert alert-info text-center m-4" >Start a conversation with <span className="fw-bold text-capitalize" >{userComper.name}</span>  your patner</div> :
                 //    { messages.filter((msg, i, arr) =>  ) }
                        
                         messages.map((msg, i, arr) => (
-                            <div key={i} >
+                            <div key={i} className="mb-3" >
                                 <h1 className="text-center h3" >{msg?.date.split("/")[0] !== arr[i + 1]?.date.split("/")[0] ? msg?.date  : null}</h1>
 
                                 <div className={msg.from?.email == user.email ? "incoming_message shadow border rounded mt-3" : "local_message shadow border   border  rounded mt-3"}>

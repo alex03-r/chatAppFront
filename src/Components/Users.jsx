@@ -72,7 +72,8 @@ export function Users() {
 
 
     return (
-        <div className=" ms-sm-4 ms-md-0 p-3  " style={{height:"340px",  minHeight:"300px"}}>
+        <div className=" ms-sm-4 ms-md-0  p-3" style={{height:"340px", overflowY:"auto" ,  minHeight:"300px"}}>
+            {/* <h3>Users</h3> */}
             {
                 users.map((u,i ) => (
                     <ul key={u.id} className="list-group mb-2" hidden={u.email == user.email} onClick={() => joinRoom(u)} >
